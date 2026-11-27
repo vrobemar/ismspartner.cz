@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cesta k ISMS | ISMS partner</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://www.ismspartner.cz/cesta-k-isms.html">
+<meta name="description" content="Osm kroků, jak zavést funkční systém řízení bezpečnosti informací (ISMS) podle ISO/IEC 27001 a zákona č. 264/2025 Sb.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
+<style>
+/* Layout: auditní spis. Úzký čtecí sloupec, odkazy na články norem v mono, jedna tmavá "pečeť" sekce pro NIS2. */
+:root{
+  --paper:#F3F5F4;        /* chladný papír */
+  --sheet:#FFFFFF;
+  --ink:#13202B;          /* inkoust */
+  --muted:#52606B;
+  --line:#D5DCDA;
+  --accent:#0F6E63;       /* zelená kontrolního razítka */
+  --accent-soft:#DDEDEA;
+  --seal:#14262F;         /* tmavý pás NIS2 */
+  --seal-fg:#E8EFED;
+  --seal-muted:#9DB0AD;
+  --f-display:"Sora","IBM Plex Sans",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --s-1:.8125rem; --s0:1rem; --s1:1.125rem; --s2:1.5rem; --s3:2.125rem; --s4:clamp(2.25rem,5.2vw,3.5rem);
+  --wrap:68rem;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0F171C; --sheet:#152129; --ink:#E4EAE8; --muted:#9AA8AE; --line:#26353D;
+  --accent:#4FC2B1; --accent-soft:#16332F; --seal:#0A1216; --seal-fg:#E4EAE8; --seal-muted:#8FA3A6;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0F171C; --sheet:#152129; --ink:#E4EAE8; --muted:#9AA8AE; --line:#26353D;
+  --accent:#4FC2B1; --accent-soft:#16332F; --seal:#0A1216; --seal-fg:#E4EAE8; --seal-muted:#8FA3A6;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:var(--s0);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15;letter-spacing:-.01em}
+h2{font-size:var(--s3);font-weight:600}
+h3{font-size:var(--s1);font-weight:600}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-size:var(--s-1);letter-spacing:.02em}
+.eyebrow{font-family:var(--f-mono);font-size:var(--s-1);text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}
+.ph{background:var(--accent-soft);color:var(--ink);padding:0 .3em;border-radius:3px;font-family:var(--f-mono);font-size:.9em}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--seal)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--seal);color:var(--seal-fg);border-bottom:2px solid var(--accent)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.75rem}
+.brand{display:flex;align-items:center;gap:.8rem;text-decoration:none;color:var(--seal-fg);min-width:0}
+.mark{flex:none;display:grid;place-items:center;width:42px;height:42px;border:1.5px solid var(--accent);border-radius:8px;font-family:var(--f-mono);font-weight:500;font-size:.95rem;letter-spacing:.04em;color:var(--accent);position:relative}
+.mark::after{content:"";position:absolute;right:-4px;bottom:-4px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--seal)}
+.brand-text{display:grid;line-height:1.2;min-width:0}
+.brand-text strong{font-family:var(--f-display);font-weight:600;font-size:1.05rem;letter-spacing:-.01em}
+.brand-text small{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--seal-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+nav ul{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+nav ul{align-items:center}
+nav a{color:var(--seal-muted);text-decoration:none;font-size:.95rem}
+nav a:hover{color:var(--seal-fg)}
+@media (max-width:760px){nav ul li:not(:last-child){display:none}}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.15rem;border-radius:6px;font-weight:600;text-decoration:none;font-size:.95rem;border:1px solid transparent;transition:transform .15s ease,background .15s ease}
+.btn-primary{background:var(--accent);color:var(--sheet)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--sheet)}
+nav .btn{padding:.45rem .9rem;color:var(--sheet);background:var(--accent)}
+nav .btn:hover{color:var(--sheet)}
+@media (max-width:480px){.brand-text small{letter-spacing:.04em;font-size:.66rem}}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;padding-block:4.5rem 4rem}
+.hero h1{font-size:var(--s4);font-weight:700;margin-block:.9rem 1.2rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{font-size:var(--s1);color:var(--muted);max-width:36rem}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.8rem}
+.trail{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:1.4rem 1.4rem 1.1rem;box-shadow:0 18px 40px -28px rgba(10,30,40,.45)}
+.trail-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;border-bottom:1px dashed var(--line);padding-bottom:.7rem;margin-bottom:.4rem}
+.trail ol{list-style:none;margin:0;padding:0}
+.trail li{display:grid;grid-template-columns:1.6rem 1fr;gap:.75rem;align-items:start;padding:.65rem 0;border-bottom:1px solid var(--line)}
+.trail li:last-child{border-bottom:0}
+.trail .n{font-family:var(--f-mono);font-size:var(--s-1);color:var(--muted);padding-top:.1rem}
+.trail strong{display:block;font-weight:600;font-size:.97rem}
+.trail span.ref{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.chip{font-family:var(--f-mono);font-size:.7rem;padding:.15rem .5rem;border-radius:99px;white-space:nowrap;border:1px solid var(--line);color:var(--muted)}
+.chip.ok{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:2.2rem;padding-block:3rem}}
+
+/* sections */
+section{padding-block:4.5rem}
+.sec-head{display:grid;gap:.7rem;max-width:44rem;margin-bottom:2.4rem}
+.sec-head p{color:var(--muted);font-size:var(--s1)}
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.svc{background:var(--sheet);padding:1.8rem;display:grid;gap:.8rem;align-content:start}
+.svc .ref{color:var(--accent)}
+.svc p{color:var(--muted)}
+.svc ul{margin:.2rem 0 0;padding-left:1.1rem;display:grid;gap:.3rem}
+.svc li::marker{color:var(--accent)}
+@media (max-width:720px){.services{grid-template-columns:1fr}}
+
+/* NIS2 band */
+.seal{background:var(--seal);color:var(--seal-fg)}
+.seal .eyebrow{color:var(--seal-muted)}
+.seal .sec-head p{color:var(--seal-muted)}
+.law-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.law{border-top:2px solid var(--accent);padding-top:1rem;display:grid;gap:.55rem;align-content:start}
+.law p{color:var(--seal-muted)}
+.law .mono{color:var(--accent)}
+.statute{margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:.6rem}
+.statute span{font-family:var(--f-mono);font-size:.78rem;border:1px solid color-mix(in srgb,var(--seal-fg) 22%,transparent);border-radius:4px;padding:.3rem .6rem;color:var(--seal-fg)}
+@media (max-width:860px){.law-grid{grid-template-columns:1fr}}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;counter-reset:s}
+.steps li{counter-increment:s;display:grid;gap:.45rem;align-content:start;padding-top:1rem;border-top:1px solid var(--line);position:relative}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--f-mono);font-size:var(--s-1);color:var(--accent)}
+.steps p{color:var(--muted);font-size:.93rem}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.about .text{display:grid;gap:1rem;max-width:34rem}
+.about .text p{color:var(--muted)}
+.creds{background:var(--sheet);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.creds div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--line);align-items:center}
+.creds div:last-child{border-bottom:0}
+.creds dt{font-weight:500}
+.creds dd{margin:0}
+.person{display:flex;align-items:center;gap:1rem}
+.person img{width:112px;height:112px;border-radius:50%;object-fit:cover;border:3px solid var(--sheet);box-shadow:0 0 0 1px var(--line)}
+.person strong{display:block;font-family:var(--f-display);font-size:var(--s1)}
+.person span{color:var(--muted);font-size:.9rem}
+.note{font-size:.85rem;color:var(--muted);margin-top:.8rem}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+
+/* contact */
+.contact{background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:2.4rem;display:grid;grid-template-columns:1.2fr 1fr;gap:2.4rem;align-items:center}
+.contact p{color:var(--muted)}
+.contact dl{margin:0;display:grid;gap:.9rem}
+.contact dt{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.contact dd{margin:.1rem 0 0;font-size:var(--s1);font-weight:500;user-select:all}
+@media (max-width:760px){.contact{grid-template-columns:1fr;padding:1.6rem}}
+
+footer{border-top:1px solid var(--line);padding-block:2rem;color:var(--muted);font-size:.85rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+
+/* cesta k ISMS */
+.page-hero .wrap{padding-block:4rem 1rem;display:grid;gap:1rem;max-width:var(--wrap)}
+.page-hero h1{font-size:var(--s4);font-weight:700}
+.page-hero h1 em{font-style:normal;color:var(--accent)}
+.page-hero .lead{font-size:var(--s1);color:var(--muted);max-width:44rem}
+.path{list-style:none;margin:0;padding:0;display:grid;gap:1rem;counter-reset:p}
+.path li{counter-increment:p;background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:1.4rem 1.6rem;display:grid;grid-template-columns:3rem 1fr;gap:1rem;align-items:start}
+.path li::before{content:counter(p,decimal-leading-zero);font-family:var(--f-mono);font-size:1.1rem;color:var(--accent);padding-top:.05rem}
+.path .body{display:grid;gap:.55rem}
+.path .body p{color:var(--muted)}
+.path .body ul{margin:0;padding-left:1.1rem;display:grid;gap:.25rem;color:var(--muted)}
+.path .body li::marker{color:var(--accent)}
+.path .ref{color:var(--accent)}
+.cta-band{margin-top:2.6rem;background:var(--seal);color:var(--seal-fg);border-radius:12px;padding:2rem;display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;justify-content:space-between}
+.cta-band p{color:var(--seal-muted);max-width:36rem}
+.back{display:inline-block;margin-bottom:.4rem;font-family:var(--f-mono);font-size:var(--s-1);text-decoration:none}
+@media (max-width:560px){.path li{grid-template-columns:1fr;gap:.4rem}}
+footer{border-top:1px solid var(--line);padding-block:2rem;color:var(--muted);font-size:.85rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Úvod"><span class="mark" aria-hidden="true">IP</span><span class="brand-text"><strong>ISMS partner</strong><small>Ing. Martin Vrobel · Kybernetická bezpečnost</small></span></a>
+    <nav aria-label="Hlavní navigace">
+      <ul>
+        <li><a href="index.html#sluzby">Služby</a></li>
+        <li><a href="index.html#nis2">NIS2</a></li>
+        <li><a href="cesta-k-isms.html" aria-current="page">Cesta k ISMS</a></li>
+        <li><a href="index.html#o-mne">O mně</a></li>
+        <li><a class="btn btn-primary" href="index.html#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="page-hero">
+    <div class="wrap">
+      <a class="back" href="index.html">← Zpět na úvod</a>
+      <p class="eyebrow">ISO/IEC 27001 · zákon č.&nbsp;264/2025&nbsp;Sb.</p>
+      <h1>Cesta k <em>funkčnímu ISMS</em> v osmi krocích</h1>
+      <p class="lead">Systém řízení bezpečnosti informací se nezavádí najednou. Tady je přehled, jak postupně dojít od rozhodnutí vedení k fungujícímu a auditovatelnému systému.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:2rem">
+    <div class="wrap">
+      <ol class="path">
+        <li><div class="body"><p class="mono ref">ISO/IEC 27001 kap. 5</p><h3>Závazek vedení a odpovědné role</h3><p>Bez podpory vedení ISMS nefunguje. Vedení schválí cíle, rozpočet a jmenuje odpovědné osoby.</p><ul><li>jmenování manažera kybernetické bezpečnosti a dalších rolí</li><li>schválení cílů, zdrojů a harmonogramu</li><li>odpovědnost statutárního orgánu podle zákona č.&nbsp;264/2025&nbsp;Sb.</li></ul></div></li>
+        <li><div class="body"><p class="mono ref">ISO/IEC 27001 kap. 4</p><h3>Určení rozsahu a regulace</h3><p>Nejdřív je potřeba vědět, co chráníte a jaká pravidla na vás dopadají.</p><ul><li>posouzení, zda a v jakém režimu spadáte pod zákon č.&nbsp;264/2025&nbsp;Sb. (režim nižších nebo vyšších povinností)</li><li>vymezení rozsahu ISMS: lokality, služby, systémy, dodavatelé</li><li>kontext organizace a zainteresované strany</li></ul></div></li>
+        <li><div class="body"><p class="mono ref">gap analýza</p><h3>Gap analýza</h3><p>Porovnání současného stavu s požadavky ukáže, co už máte a co chybí.</p><ul><li>vyhláška č.&nbsp;409/2025&nbsp;Sb. (režim vyšších povinností) nebo č.&nbsp;410/2025&nbsp;Sb. (režim nižších povinností)</li><li>ISO/IEC 27001 a opatření přílohy A</li><li>prioritizovaný plán nápravy</li></ul></div></li>
+        <li><div class="body"><p class="mono ref">ISO/IEC 27005</p><h3>Aktiva a analýza rizik</h3><p>Rizika určují, která opatření a v jaké míře zavést.</p><ul><li>soupis aktiv a jejich garantů</li><li>hrozby, zranitelnosti a hodnocení rizik</li><li>plán zvládání rizik a akceptace zbytkových rizik</li></ul></div></li>
+        <li><div class="body"><p class="mono ref">příloha A · SoA</p><h3>Politiky a bezpečnostní opatření</h3><p>Rozhodnutí z analýzy rizik se promítnou do pravidel a technických opatření.</p><ul><li>bezpečnostní politika a prohlášení o aplikovatelnosti (SoA)</li><li>řízení přístupů, zálohování, kontinuita činností</li><li>řízení dodavatelů a bezpečnost v dodavatelském řetězci</li></ul></div></li>
+        <li><div class="body"><p class="mono ref">ISO/IEC 27001 kap. 7</p><h3>Lidé a incidenty</h3><p>Většina incidentů začíná u lidí. Proto školení a jasný postup, co dělat, když se něco stane.</p><ul><li>školení zaměstnanců i vedení</li><li>detekce, vyhodnocení a zvládání incidentů</li><li>hlášení kybernetických bezpečnostních incidentů NÚKIB</li></ul></div></li>
+        <li><div class="body"><p class="mono ref">ISO/IEC 27001 kap. 8–9</p><h3>Provoz a měření</h3><p>ISMS není jednorázový projekt. Musí běžet a být měřitelný.</p><ul><li>monitoring a sběr záznamů</li><li>metriky a cíle bezpečnosti</li><li>pravidelné přezkoumání vedením</li></ul></div></li>
+        <li><div class="body"><p class="mono ref">ISO/IEC 27001 kap. 9.2 a 10</p><h3>Interní audit a zlepšování</h3><p>Nezávislé ověření ukáže, zda systém skutečně funguje, a nastartuje zlepšování.</p><ul><li>interní audit ISMS</li><li>nápravná opatření a neustálé zlepšování</li><li>příprava na certifikační audit ISO/IEC 27001</li></ul></div></li>
+      </ol>
+
+      <div class="cta-band">
+        <div><h2 style="font-size:var(--s2)">Nevíte, kde začít?</h2><p>Na úvodní konzultaci společně určíme, kde na cestě jste a jaký je další krok.</p></div>
+        <a class="btn btn-primary" href="mailto:info@ismspartner.cz?subject=Konzultace%20ISMS%20%2F%20NIS2">Domluvit konzultaci</a>
+      </div>
+      <p class="mono" style="margin-top:1.2rem;color:var(--muted)">Zdroj k regulaci: <a href="https://portal.nukib.gov.cz">Portál NÚKIB</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 ISMS partner · Ing. Martin Vrobel · Kpt. Nálepky 3047, 738 01 Frýdek-Místek · IČO 73026018 · podnikatel zapsaný v živnostenském rejstříku (Magistrát města Frýdku-Místku)</span>
+    <span class="mono">ISO/IEC 27001 · NIS2 · 264/2025 Sb.</span>
+  </div>
+</footer>
+</body>
+</html>
