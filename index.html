@@ -152,6 +152,15 @@ section{padding-block:4.5rem}
 
 footer{border-top:1px solid var(--line);padding-block:2rem;color:var(--muted);font-size:.85rem}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+.trail-more{display:inline-block;margin-top:.8rem;font-weight:600;color:var(--accent);text-decoration:none}
+.trail-more:hover{text-decoration:underline}
+.check{margin-top:2.4rem;border:1px solid rgba(232,239,237,.25);border-radius:10px;padding:1.6rem;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:center}
+.check h3{margin:0 0 .8rem;color:var(--seal-fg)}
+.check ol{margin:0;padding-left:1.2rem;color:var(--seal-fg)}
+.check li{margin:.45rem 0}
+.check li span{display:block;font-size:.88rem;color:var(--seal-muted)}
+.check .btn{white-space:nowrap}
+@media (max-width:720px){.check{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -184,15 +193,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
           <a class="btn btn-ghost" href="#sluzby">Co dělám</a>
         </div>
       </div>
-      <aside class="trail" aria-label="Typická cesta k certifikaci">
-        <div class="trail-head"><strong>Cesta k certifikaci ISMS</strong><span class="mono" style="color:var(--muted)">ISO/IEC 27001:2022</span></div>
+      <aside class="trail" aria-label="Cesta k funkčnímu ISMS">
+        <div class="trail-head"><strong>Cesta k funkčnímu ISMS</strong><span class="mono" style="color:var(--muted)">ISO/IEC 27001 + zákon 264/2025</span></div>
         <ol>
-          <li><span class="n">01</span><div><strong>Gap analýza</strong><span class="ref">kap. 4–10 + příloha A</span></div></li>
-          <li><span class="n">02</span><div><strong>Analýza rizik</strong><span class="ref">ISO/IEC 27005, kap. 6.1.2</span></div></li>
-          <li><span class="n">03</span><div><strong>Prohlášení o aplikovatelnosti</strong><span class="ref">SoA, 93 opatření přílohy A</span></div></li>
-          <li><span class="n">04</span><div><strong>Interní audit</strong><span class="ref">kap. 9.2 · ISO 19011</span></div></li>
-          <li><span class="n">05</span><div><strong>Certifikační audit</strong><span class="ref">stage 1 + stage 2</span></div></li>
+          <li><span class="n">01</span><div><strong>Rozsah a regulace</strong><span class="ref">týká se vás zákon a v jakém režimu?</span></div></li>
+          <li><span class="n">02</span><div><strong>Gap analýza</strong><span class="ref">vyhl. 409/2025 nebo 410/2025 · příloha A</span></div></li>
+          <li><span class="n">03</span><div><strong>Rizika a opatření</strong><span class="ref">ISO/IEC 27005 · SoA</span></div></li>
+          <li><span class="n">04</span><div><strong>Lidé a incidenty</strong><span class="ref">školení · hlášení NÚKIB</span></div></li>
+          <li><span class="n">05</span><div><strong>Interní audit a zlepšování</strong><span class="ref">kap. 9.2 a 10</span></div></li>
         </ol>
+        <a class="trail-more" href="cesta-k-isms.html">Všech 8 kroků →</a>
       </aside>
     </div>
   </div>
@@ -247,6 +257,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
       </div>
       <div class="statute" aria-label="Předpisy">
         <span>zákon č. 264/2025 Sb.</span><span>vyhláška č. 409/2025 Sb. · režim vyšších povinností</span><span>vyhláška č. 410/2025 Sb. · režim nižších povinností</span><span>směrnice (EU) 2022/2555</span><span>ISO/IEC 27001:2022</span><span>ISO/IEC 27005:2022</span>
+      </div>
+      <div class="check" aria-label="Rychlý test">
+        <div>
+          <h3>Týká se vás nový zákon? Tři rychlé otázky</h3>
+          <ol>
+            <li>Působíte v odvětví uvedeném v příloze zákona?<span>Například energetika, doprava, zdravotnictví, digitální služby, výroba, odpady nebo veřejná správa.</span></li>
+            <li>Jste střední nebo velký podnik?<span>Zpravidla od 50 zaměstnanců nebo od 10 mil. EUR obratu. U některých služeb rozhoduje jen jejich povaha.</span></li>
+            <li>Dodáváte služby nebo ICT firmě, která pod zákon spadá?<span>Pak od vás bude zákazník požadovat bezpečnostní opatření ve smlouvě.</span></li>
+          </ol>
+        </div>
+        <a class="btn btn-primary" href="#kontakt">Ověřím zdarma na úvodní konzultaci</a>
       </div>
       <p class="mono" style="margin-top:1.2rem;color:var(--seal-muted)">Zdroj: <a href="https://portal.nukib.gov.cz" style="color:var(--seal-fg)">Portál NÚKIB</a> a <a href="https://nukib.gov.cz" style="color:var(--seal-fg)">nukib.gov.cz</a></p>
     </div>
